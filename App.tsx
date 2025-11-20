@@ -12,7 +12,7 @@ import { useTheme } from './contexts/ThemeContext';
 import type { BusLine, BusPosition, BusStopResponse } from './types';
 import './App.css';
 
-const API_BASE_URL = process.VITE_API_BASE_URL;
+const API_BASE_URL = process.API_BASE_URL;
 
 // Custom hook to fetch bus stops for both directions
 function useBusStopsForBothDirections(

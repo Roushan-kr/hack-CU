@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { BusStopResponse, BusPositionResponse, BusLine } from '../types';
 
-const API_BASE_URL = process.VITE_API_BASE_URL;
+const API_BASE_URL = process.API_BASE_URL;
 
 export function useBusLines(city: string = 'KENITRA') {
   const [data, setData] = useState<BusLine[]>([]);
