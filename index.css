@@ -1,0 +1,601 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode custom properties */
+:root {
+  --color-primary: #5409DA;
+  --color-secondary: #4E71FF;
+  --color-accent: #8DD8FF;
+  --color-surface: #BBFBFF;
+  --color-background: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #666666;
+}
+
+.dark {
+  --color-primary: #52357B;
+  --color-secondary: #5459AC;
+  --color-accent: #648DB3;
+  --color-surface: #B2D8CE;
+  --color-background: #1a1a1a;
+  --color-text: #ffffff;
+  --color-text-secondary: #b3b3b3;
+}
+
+/* Custom animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Add smooth pulsing marker animation */
+@keyframes marker-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(27, 147, 235, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(27, 147, 235, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(27, 147, 235, 0);
+  }
+}
+
+.pulse-marker {
+  animation: marker-pulse 2s infinite;
+}
+
+/* Line Card Styles */
+.line-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 300ms;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border: 1px solid #f3f4f6;
+}
+
+.dark .line-card {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: white;
+}
+
+.line-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-color: var(--primary-100);
+  transform: translateY(-2px);
+}
+
+.dark .line-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.line-card.selected {
+  background-color: var(--primary-50);
+  border-color: var(--primary-200);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .line-card.selected {
+  background-color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+
+/* Line type pills */
+.line-type-pill {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.line-type-frequent {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.line-type-urban {
+  background-color: #dbeafe;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+.line-type-night {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+  border: 1px solid #e9d5ff;
+}
+
+/* Sticky header */
+.sticky-search {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Line number badges */
+.line-number {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line-number-forward {
+  background-image: linear-gradient(to bottom right, #22c55e, #16a34a);
+}
+
+.line-number-backward {
+  background-image: linear-gradient(to bottom right, #f97316, #ea580c);
+}
+
+/* Scrollbar styling */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: #f3f4f6;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+}
+
+/* Dark mode scrollbar */
+.dark .scrollbar-thin {
+  scrollbar-color: #4b5563 #374151;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #4b5563;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Smooth scrolling for all scrollable elements */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for elements with hide-scrollbar class */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom transitions */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section styles */
+.section-header {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Global CSS Variables */
+:root {
+  /* Primary colors */
+  --primary-50: #f0f7ff;
+  --primary-100: #e0eefe;
+  --primary-200: #bae0fd;
+  --primary-300: #84cafc;
+  --primary-400: #43adf7;
+  --primary-500: #1b93eb;
+  --primary-600: #0b77d9;
+  --primary-700: #0d62b2;
+  --primary-800: #125293;
+  --primary-900: #15467a;
+  
+  /* Secondary colors */
+  --secondary-50: #f3f9f9;
+  --secondary-100: #e8f3f3;
+  --secondary-200: #cce7e7;
+  --secondary-300: #9fd5d5;
+  --secondary-400: #67baba;
+  --secondary-500: #44a0a0;
+  --secondary-600: #358585;
+  --secondary-700: #2d6c6c;
+  --secondary-800: #285a5a;
+  --secondary-900: #254c4c;
+  
+  /* Feedback colors */
+  --success: #16a34a;
+  --success-light: #dcfce7;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --error: #ef4444;
+  --error-light: #fee2e2;
+  --info: #3b82f6;
+  --info-light: #dbeafe;
+  
+  /* Neutral colors */
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e5e5e5;
+  --gray-300: #d4d4d4;
+  --gray-400: #a3a3a3;
+  --gray-500: #737373;
+  --gray-600: #525252;
+  --gray-700: #404040;
+  --gray-800: #262626;
+  --gray-900: #171717;
+  
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+}
+
+/* Base Styles */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--gray-100);
+  color: var(--gray-900);
+}
+
+/* Leaflet CSS overrides */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply bg-white shadow-lg border-0 rounded-lg overflow-hidden;
+  backdrop-filter: blur(12px);
+}
+
+.leaflet-popup-content {
+  @apply text-sm p-4;
+  margin: 0;
+}
+
+.leaflet-popup-tip {
+  @apply bg-white;
+  backdrop-filter: blur(12px);
+}
+
+.leaflet-control-zoom {
+  @apply border-0 shadow-lg;
+}
+
+.leaflet-control-zoom a {
+  @apply bg-white border-0 text-gray-700 hover:bg-white/90;
+  border-radius: var(--radius-md) !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  margin: 0 0 8px 0 !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Custom Marker Styles */
+.custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+  transform: translate(-50%, -50%);
+}
+
+/* Bus location marker */
+.bus-marker {
+  @apply bg-error-500 flex items-center justify-center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--error-light);
+  border: 2px solid white;
+  transition: all 0.2s ease;
+}
+
+/* User location marker */
+.user-marker {
+  @apply bg-primary-600 flex items-center justify-center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--primary-100);
+  border: 2px solid white;
+  transition: all 0.2s ease;
+}
+
+/* Bus stop marker */
+.stop-marker {
+  @apply bg-success-500 flex items-center justify-center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 4px var(--success-light);
+}
+
+/* Closest stop marker */
+.closest-stop-marker {
+  @apply bg-warning-500 flex items-center justify-center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 4px var(--warning-light);
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-300) var(--gray-100);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full transition-colors hover:bg-gray-400;
+}
+
+/* Hide scrollbar but maintain functionality */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Thin scrollbar for better aesthetics */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Glass Morphism Effects */
+.glass {
+  @apply bg-white/80 backdrop-blur-md border border-white/20;
+}
+
+.glass-dark {
+  @apply bg-gray-900/80 backdrop-blur-md border border-gray-700/20 text-white;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+  50% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Layout Containers */
+.container-tight {
+  @apply max-w-md mx-auto px-4;
+}
+
+.container-default {
+  @apply max-w-2xl mx-auto px-4;
+}
+
+.container-wide {
+  @apply max-w-4xl mx-auto px-4;
+}
+
+.container-max {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mobile-full-height {
+    height: calc(100vh - 3.5rem);
+  }
+}
+
+/* Utility Classes */
+.text-gradient {
+  @apply bg-gradient-to-r from-primary-600 to-secondary-500 text-transparent bg-clip-text;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Button Styles */
+.btn {
+  @apply inline-flex items-center justify-center px-4 py-2 rounded-md font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+}
+
+.btn-secondary {
+  @apply bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+}
+
+.btn-outline {
+  @apply border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-800 focus:ring-primary-500;
+}
+
+.btn-ghost {
+  @apply bg-transparent hover:bg-gray-100 text-gray-700 focus:ring-gray-500;
+}
+
+.btn-danger {
+  @apply bg-error-500 text-white hover:bg-error-600 focus:ring-error-500;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-white rounded-xl shadow-md overflow-hidden transition-all duration-200;
+}
+
+.card-hover {
+  @apply hover:shadow-lg hover:-translate-y-1;
+}
+
+/* Badge Styles */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-primary {
+  @apply bg-primary-100 text-primary-800;
+}
+
+.badge-secondary {
+  @apply bg-secondary-100 text-secondary-800;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.badge-error {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Direction Colors */
+.direction-forward {
+  @apply from-green-500 to-teal-600;
+}
+
+.direction-backward {
+  @apply from-amber-500 to-orange-600;
+}
